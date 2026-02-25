@@ -1,7 +1,6 @@
 import { runDocker } from "../../docker/runner";
 import { fixTests } from "./fixTests";
 import { writeMultipleTests } from "../../utils/file";
-import { parseTests } from "../parser/parser";
 import { getSourceFiles } from "../../utils/scan";
 import { createPR } from "../github/pr";
 
@@ -13,6 +12,7 @@ export async function runAgentLoop(
   let attempts = 0;
   const maxRetries = 3;
 
+  await createPR(repoPath, repoUrl);
   while (attempts < maxRetries) {
     socket.send(`Running tests (attempt ${attempts + 1})...\n`);
 
@@ -26,7 +26,7 @@ export async function runAgentLoop(
 
       const prUrl = await createPR(repoPath, repoUrl);
 
-  socket.send(`PR Created: ${prUrl}\n`);
+      socket.send(`PR Created: ${prUrl}\n`);
       return;
     }
 
