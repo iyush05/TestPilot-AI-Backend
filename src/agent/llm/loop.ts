@@ -3,10 +3,12 @@ import { fixTests } from "./fixTests";
 import { writeMultipleTests } from "../../utils/file";
 import { parseTests } from "../parser/parser";
 import { getSourceFiles } from "../../utils/scan";
+import { createPR } from "../github/pr";
 
 export async function runAgentLoop(
   repoPath: string,
-  socket: any // websocket
+  socket: any, // websocket
+  repoUrl: string
 ) {
   let attempts = 0;
   const maxRetries = 3;
@@ -20,6 +22,11 @@ export async function runAgentLoop(
 
     if (result.success) {
       socket.send("Tests passed!\n");
+      socket.send("Tests passed! Creating PR...\n");
+
+      const prUrl = await createPR(repoPath, repoUrl);
+
+  socket.send(`PR Created: ${prUrl}\n`);
       return;
     }
 
