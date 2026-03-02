@@ -4,6 +4,10 @@ An intelligent developer tool that automatically generates unit tests for your c
 
 ---
 
+## Live Demo
+https://github.com/user-attachments/assets/f915e75a-9d80-4367-8203-03d0cb1443b5
+
+
 ## Overview
 
 AI Test Generator analyzes source code and produces high-quality unit tests (e.g., Jest) covering:
