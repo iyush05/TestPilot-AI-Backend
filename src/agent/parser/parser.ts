@@ -70,7 +70,6 @@ export function parseTests(raw: string) {
 
     let fileName = fileNameLine.trim();
 
-    // 🔥 FIX: remove trailing ===
     fileName = fileName.replace(/===+$/, "").trim();
 
     const content = rest.join("\n").trim();

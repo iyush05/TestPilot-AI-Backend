@@ -1,12 +1,11 @@
-// src/websocket/socket.ts
 import { WebSocketServer } from "ws";
 
 export function setupWebSocket(server: any) {
-  console.log("🚀 setupWebSocket called"); // 🔥 ADD THIS
+  console.log("setupWebSocket called"); 
 
   const wss = new WebSocketServer({ server });
 
-  console.log("✅ WebSocket server initialized"); // 🔥 ADD THIS
+  console.log("WebSocket server initialized");
 
   return wss;
 }

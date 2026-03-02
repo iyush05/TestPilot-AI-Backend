@@ -5,7 +5,7 @@ import path from "path";
 export async function createPR(repoPath: string, repoUrl: string) {
   const git = simpleGit(repoPath);
 
-  const match = repoUrl.match(/github.com\/(.*)\/(.*).git/);
+  const match = repoUrl.match(/github\.com[:/]([^/]+)\/([^/]+?)(\.git)?$/);
   if (!match) throw new Error("Invalid repo URL");
 
   const owner = match[1];

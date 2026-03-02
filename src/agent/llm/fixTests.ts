@@ -56,6 +56,5 @@ Rules:
   //   throw new Error("LLM did not return valid JSON with 'tests' array");
   // }
 
-  console.log("✅ Fixed tests:", parsed);
   return parsed;
 }
